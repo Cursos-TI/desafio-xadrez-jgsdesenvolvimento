@@ -22,7 +22,7 @@
 int main() {
 
     //Delcarando as variaveis
-    int bispo = 1, torre = 1, rainha;
+    int bispo = 1, torre = 1, rainha,cavalo;
 
     //Header
     printf("**************************************************************************\n");
@@ -33,7 +33,7 @@ int main() {
     printf("|JOGADA| BISPO |\n\n");
     while (bispo <= 5){
 
-        printf("|Bispo| para cima ^ e para Direira >.>.>|\n");
+        printf("|Movimento| Para cima e para Direira |\n");
         bispo ++;
     }
     printf("**************************************************************************\n");
@@ -42,7 +42,7 @@ int main() {
     do
     {
 
-        printf("|Torre| para Direira >.>.>|\n");
+        printf("|Movimento| Para Direira |\n");
         torre ++;
 
     } while (torre <= 5);
@@ -52,7 +52,23 @@ int main() {
 
     for (rainha = 1; rainha <= 8 ; rainha++)
     {
-        printf("|Rainha| para Esquerda <.<.<|\n");
+        printf("|Movimento| Para Esquerda |\n");
+    }
+    printf("**************************************************************************\n");
+    //Movimentação do Cavalo em L para Baixo e para o lado
+    printf("|JOGADA| Cavalo |\n\n");
+
+    for (cavalo = 1; cavalo <= 2; cavalo++)
+    {
+        printf("|Movimento| Para Baixo |\n");
+
+    }
+
+    int movimento_cvl = 1;
+    while (movimento_cvl <= 1)
+    {
+        printf("|Movimento| Para Esquerda |\n");
+        movimento_cvl++;
     }
     printf("**************************************************************************\n");
 
