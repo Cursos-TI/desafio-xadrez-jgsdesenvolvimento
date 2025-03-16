@@ -19,58 +19,117 @@
 // Exemplo: Crie uma função recursiva para o movimento do Bispo.
 // Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
 // Inclua o uso de continue e break dentro dos loops.
-int main() {
+#include <stdio.h>
 
-    //Delcarando as variaveis
-    int bispo = 1, torre = 1, rainha,cavalo;
+//Função do Header e Footer
+void header_footer();
+// Funções recursivas para Torre, Bispo e Rainha
+void torre(int avanco);
+void bispo(int avanco);
+void rainha(int avanco);
+
+// Função para o movimento do Cavalo com loops
+void cavalo();
+
+// Função para o movimento do Bispo com loops aninhados
+void bispo_loops(int avanco);
+
+// Função principal
+int main() {
+    int avanco;
 
     //Header
+    header_footer();
+    // Movimento da Torre
+    printf("|Jogada da Torre:|\n\n");
+    avanco = 5;  // Número de casas a serem movidas
+    torre(avanco);
+    printf("\n");
+
+    // Movimento do Bispo
+    printf("|Jogada do Bispo:|\n\n");
+    avanco = 5;  // Número de casas a serem movidas
+    bispo(avanco);
+    printf("\n");
+
+    // Movimento da Rainha
+    printf("|Jogada da Rainha:|\n\n");
+    avanco = 8;  // Número de casas a serem movidas
+    rainha(avanco);
+    printf("\n");
+
+    // Movimento do Cavalo
+    printf("|Jogada do Cavalo:|\n\n");
+    cavalo();
+    printf("\n");
+
+    // Movimento do Bispo (loops)
+    printf("|Jogada do Bispo (loops):|\n\n");
+    avanco = 5;  // Número de casas a serem movidas
+    bispo_loops(avanco);
+    printf("\n");
+
+    //Footer
+    header_footer();
+    return 0;
+}
+//Função para exibir o reader e o footer
+void header_footer(){
+
     printf("**************************************************************************\n");
     printf("***************************| DESAFIO XADREZ |*****************************\n");
     printf("**************************************************************************\n\n");
 
-    //Movimentação do bispo 5 casas na diagonal superior direita
-    printf("|JOGADA| BISPO |\n\n");
-    while (bispo <= 5){
-
-        printf("|Movimento| Para cima e para Direira |\n");
-        bispo ++;
+}
+// Função recursiva para a Torre
+void torre(int avanco) {
+    if (avanco > 0) {
+        printf("|Movimentando|Para a Direita|\n");  // Movimento da Torre para a direita
+        torre(avanco - 1);  // Chamada recursiva
     }
-    printf("**************************************************************************\n");
-    //Movimentação da torre 5 casas para a direita
-    printf("|JOGADA| TORRE |\n\n");
-    do
-    {
+}
 
-        printf("|Movimento| Para Direira |\n");
-        torre ++;
-
-    } while (torre <= 5);
-    printf("**************************************************************************\n");
-    //Movimentação da rainha 8 casas para a esquerda
-    printf("|JOGADA| RAINHA |\n\n");
-
-    for (rainha = 1; rainha <= 8 ; rainha++)
-    {
-        printf("|Movimento| Para Esquerda |\n");
+// Função recursiva para o Bispo
+void bispo(int avanco) {
+    if (avanco > 0) {
+        printf("|Movimentando|Para Cima e para a Direita|\n");  // Movimento do Bispo na diagonal
+        bispo(avanco - 1);  // Chamada recursiva
     }
-    printf("**************************************************************************\n");
-    //Movimentação do Cavalo em L para Baixo e para o lado
-    printf("|JOGADA| Cavalo |\n\n");
+}
 
-    for (cavalo = 1; cavalo <= 2; cavalo++)
-    {
-        printf("|Movimento| Para Baixo |\n");
+// Função recursiva para a Rainha
+void rainha(int avanco) {
+    if (avanco > 0) {
+        printf("|Movimentando|Para a Esquerda|\n");  // Movimento da Rainha para a esquerda
+        rainha(avanco - 1);  // Chamada recursiva
+    }
+}
 
+// Função para o movimento do Cavalo com loops 
+void cavalo() {
+    int i, j;
+
+    // Loop para simular o movimento em "L" (2 casas para cima, 1 para a direita)
+    for (i = 1; i <= 2; i++) {
+        printf("|Movimentando|Para Cima|\n");  // Duas casas para cima
     }
 
-    int movimento_cvl = 1;
-    while (movimento_cvl <= 1)
-    {
-        printf("|Movimento| Para Esquerda |\n");
-        movimento_cvl++;
+    for (j = 1; j <= 1; j++) {
+        printf("|Movimentando|Para a Direita|\n");  // Uma casa para a direita
     }
-    printf("**************************************************************************\n");
+}
 
-    return 0;
+// Função para o movimento do Bispo com loops aninhados
+void bispo_loops(int avanco) {
+    int i, j;
+
+    // Loop externo para o movimento vertical
+    for (i = 1; i <= avanco; i++) {
+        // Loop interno para o movimento horizontal
+        for (j = 1; j <= avanco; j++) {
+            if (i == j) {  // Apenas movimentos na diagonal
+                printf("|Movimentando|Para Cima e para a Direita|\n");
+            }
+        }
+    }
 }
